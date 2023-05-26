@@ -8,7 +8,7 @@ const Navbar = () => {
             <div className='font-semibold text-2xl'>My Market</div>
             <div className='flex space-x-5'>
                 <Link to={'/'} className='hover:text-slate-300 transition'>Home</Link>
-                <Link to={'/'} className='hover:text-slate-300 transition'>Categories</Link>
+                <Link to={'/categories'} className='hover:text-slate-300 transition'>Categories</Link>
             </div>
 
             <Link to={'/cart'}>

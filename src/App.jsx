@@ -4,6 +4,7 @@ import Cart from "./screens/Cart";
 import ProductDetails from "./screens/ProductDetails";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer";
+import Categories from "./screens/Categories";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/categories" element={<Categories />} />
         </Routes>
         <Footer />
       </BrowserRouter>
