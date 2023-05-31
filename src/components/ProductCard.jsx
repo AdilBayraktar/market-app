@@ -1,24 +1,32 @@
 import React from 'react'
 import { BsStarFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
-const ProductCard = () => {
-    const img = 'data:image/jpeg;base64,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'
+const ProductCard = ({ product }) => {
+    const addToCart = () => {
+        console.log(product)
+        const cart = []
+        localStorage.setItem(cart, cart.push(product))
+    }
     return (
+
         <div className='border m-5 max-w-[300px] bg-white rounded-lg shadow-md cursor-pointer hover:shadow-slate-400 transition'>
-            <div className='p-3'>
-                <img src={img} alt="" className='m-auto rounded-xl' />
-                <p className='font-semibold text-gray-800'>Product Name</p>
-                <p className='text-gray-500'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas in reprehenderit quae, illum voluptatem veritatis incidunt dolore et quaerat</p>
-                <div className="flex justify-between items-center mt-3 mb-2">
-                    <span className='text-3xl text-blue-800 font-normal'>$500</span>
-                    <span className='flex text-'>< BsStarFill color='orange' size={20} />4.5</span>
+            <Link to={`/product/${product?.id}`}>
+                <div className='p-3'>
+                    <img src={product?.thumbnail} alt="" className='m-auto rounded-xl max w-full h-40' />
+                    <p className='font-semibold text-gray-800 h-12 my-3'>{product?.title}</p>
+                    <p className='text-gray-500'>{(product?.description).substring(0, 40)}...</p>
+                    <div className="flex justify-between items-center mt-3 mb-2">
+                        <span className='text-3xl text-blue-800 font-normal'>${product?.price}</span>
+                        <span className='flex text-'>< BsStarFill color='orange' size={20} />{product?.rating}</span>
+                    </div>
+                    <div className="space-x-2 justify-start items-center">
+                        <span className='bg-gray-200 text-xs px-2 py-1 rounded-2xl text-blue-900'>{product?.brand}</span>
+                        <Link to={`/products-by-category/${product?.category}`}><span className='bg-gray-200 hover:bg-gray-400 transition text-xs px-2 py-1 rounded-2xl text-blue-900'>{product?.category}</span></Link>
+                    </div>
                 </div>
-                <div className="flex space-x-2 justify-start items-center">
-                    <span className='bg-gray-200 hover:bg-gray-400 transition text-xs px-2 py-1 rounded-2xl text-blue-900'>brand name</span>
-                    <span className='bg-gray-200 hover:bg-gray-400 transition text-xs px-2 py-1 rounded-2xl text-blue-900'>Category name</span>
-                </div>
-            </div>
-            <button className='bg-blue-800 text-white w-full py-2 hover:bg-blue-600 rounded-b-lg transition '>Add to Cart</button>
+            </Link>
+            <button className='bg-blue-800 text-white w-full py-2 hover:bg-blue-600 rounded-b-lg transition' onClick={() => addToCart(product)}>Add to Cart</button>
         </div>
     )
 }
