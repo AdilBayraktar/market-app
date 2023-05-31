@@ -4,6 +4,7 @@ import { getProductsByCategory } from '../redux/slices/productsByCategorySlice'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import Loader from '../components/Loader'
+import AnimatedLayout from '../animated-Layout/AnimatedLayout'
 
 const ProductsByCategory = () => {
     const dispatch = useDispatch()
@@ -15,14 +16,16 @@ const ProductsByCategory = () => {
     console.log(productsByCategory)
     console.log(id)
     return (
-        <div className='flex flex-wrap justify-center my-5'>
+        <AnimatedLayout>
+            <div className='flex flex-wrap justify-center my-5'>
 
-            {productsByCategory?.isLoading ? <Loader /> :
-                productsByCategory?.data?.data?.products?.map((product, i) => (
-                    <ProductCard key={i} product={product} />
-                ))
-            }
-        </div>
+                {productsByCategory?.isLoading ? <Loader /> :
+                    productsByCategory?.data?.data?.products?.map((product, i) => (
+                        <ProductCard key={i} product={product} />
+                    ))
+                }
+            </div>
+        </AnimatedLayout>
     )
 }
 

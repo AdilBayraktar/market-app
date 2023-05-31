@@ -5,6 +5,7 @@ import { getAllProducts } from '../redux/slices/productsSlice'
 import Loader from '../components/Loader'
 import HeroBanner from '../components/HeroBanner'
 import ReactPaginate from 'react-paginate';
+import AnimatedLayout from '../animated-Layout/AnimatedLayout'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -32,29 +33,31 @@ const Home = () => {
 
 
     return (
-        <div className=' mb-5 min-h-[80vh]'>
+        <AnimatedLayout>
+            <div className=' mb-5 min-h-[80vh]'>
 
-            {products?.isLoading ? <Loader /> :
-                <>
-                    <HeroBanner />
-                    <div className="flex flex-wrap justify-center">
-                        {currentItems?.map((product, i) => (
-                            <ProductCard key={i} product={product} />
-                        ))}
-                    </div>
-                    <ReactPaginate
-                        className='pagination'
-                        breakLabel="..."
-                        nextLabel=">"
-                        onPageChange={handlePageClick}
-                        pageRangeDisplayed={5}
-                        pageCount={pageCount}
-                        previousLabel="<"
-                        renderOnZeroPageCount={null}
-                    />
-                </>
-            }
-        </div>
+                {products?.isLoading ? <Loader /> :
+                    <>
+                        <HeroBanner />
+                        <div className="flex flex-wrap justify-center">
+                            {currentItems?.map((product, i) => (
+                                <ProductCard key={i} product={product} />
+                            ))}
+                        </div>
+                        <ReactPaginate
+                            className='pagination'
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="<"
+                            renderOnZeroPageCount={null}
+                        />
+                    </>
+                }
+            </div>
+        </AnimatedLayout>
     )
 }
 
