@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsStarFill } from 'react-icons/bs'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { addToCart } from '../redux/slices/cartSlice'
 
 const ProductCard = ({ product }) => {
-    const addToCart = () => {
-        console.log(product)
-        const cart = []
-        localStorage.setItem(cart, cart.push(product))
+    const [quantity, setQuantity] = useState(0)
+    const dispatch = useDispatch()
+    const addCart = () => {
+        dispatch(addToCart({ id: product?.id, title: product?.title, image: product?.thumbnail, quantity: quantity, price: product?.price }))
+
     }
     return (
 
@@ -26,7 +29,15 @@ const ProductCard = ({ product }) => {
                     </div>
                 </div>
             </Link>
-            <button className='bg-blue-800 text-white w-full py-2 hover:bg-blue-600 rounded-b-lg transition' onClick={() => addToCart(product)}>Add to Cart</button>
+            <div className='flex items-center gap-5 my-5 justify-center'>
+                <span className='text-gray-500 text-sm'>Quantity: </span>
+                <div className='bg-gray-200 w-fit px-5 rounded-3xl flex items-center gap-5'>
+                    <span onClick={() => quantity > 0 ? setQuantity(quantity - 1) : null} className='cursor-pointer'>-</span>
+                    <input type="text" className='w-5 text-center bg-transparent outline-none text-lg font-bold' value={quantity} />
+                    <span onClick={() => setQuantity(quantity + 1)} className='cursor-pointer'>+</span>
+                </div>
+            </div>
+            <button className='bg-blue-800 text-white w-full py-2 hover:bg-blue-600 rounded-b-lg transition' onClick={addCart}>Add to Cart</button>
         </div>
     )
 }

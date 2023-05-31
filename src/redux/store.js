@@ -3,6 +3,7 @@ import productsReducer from "./slices/productsSlice";
 import categoriesReducer from "./slices/categoriesSlice";
 import productsByCategoryReducer from "./slices/productsByCategorySlice";
 import productReducer from "./slices/singleProductSlice";
+import cartSlice from "./slices/cartSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     getAllCategories: categoriesReducer,
     getProductsByCategory: productsByCategoryReducer,
     getProduct: productReducer,
+    carts: cartSlice,
   },
 });
 export default store;
