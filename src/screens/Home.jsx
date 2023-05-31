@@ -33,11 +33,12 @@ const Home = () => {
 
 
     return (
-        <AnimatedLayout>
-            <div className=' mb-5 min-h-[80vh]'>
 
-                {products?.isLoading ? <Loader /> :
-                    <>
+        <div className=' mb-5 min-h-[80vh]'>
+
+            {products?.isLoading ? <Loader /> :
+                <>
+                    <AnimatedLayout>
                         <HeroBanner />
                         <div className="flex flex-wrap justify-center">
                             {currentItems?.map((product, i) => (
@@ -54,10 +55,10 @@ const Home = () => {
                             previousLabel="<"
                             renderOnZeroPageCount={null}
                         />
-                    </>
-                }
-            </div>
-        </AnimatedLayout>
+                    </AnimatedLayout>
+                </>
+            }
+        </div>
     )
 }
 
